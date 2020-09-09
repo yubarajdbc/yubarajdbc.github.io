@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>SHM: Pre-requisites</title>
+
+    <link rel="stylesheet" href="../revealJS/dist/reset.css">
+    <link rel="stylesheet" href="../revealJS/dist/reveal.css">
+    <link rel="stylesheet" href="../revealJS/dist/theme/black.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../revealJS/plugin/highlight/monokai.css" id="highlight-theme">
+
+    <script src=" ../Math-JS/math.js" type="text/javascript"></script>
+    <script src=" ../Math-JS/numjs.min.js" type="text/javascript"></script>
+
+    <script src="../revealJS/plugin/math/math.js"></script>
+
+
+    
+  </head>
+  <body>
+
+
+<!-- **********************************************************************************************  -->
+<!-- **********************************************************************************************  -->
+<!-- THE SLIDES portion  -->
+<div class="reveal">
+
+<!-- to control header positions-->
+<!-- In between the <div="reveal"> and the <div class="slides">-->
+  <header style="position: absolute;top: 50px; left: 100px; z-index:500; 
+  font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+  <!-- In between the <div="reveal"> and the <div class="slides">-->
+
+  <div class="slides">
+
+ <!-- ------------------------------  -->   
+<section data-background-color="#330033" > 
+    <h1 style="color:rgba(253, 251, 144, 0.952)"> Simple Harmonic Motion: <br><br>
+       <p style="color:burlywood; font-size:70%">Pre-requisites</p> 
+    </h1> 
+</section>
+
+
+<section> 
+  <h2 style=> A quick revision of the building blocks of geometry </h2>
+  <h5 style="color:burlywood"> Of course we are taking the Euclidean view and not the modern set theoretic view
+  </h5>
+</section>
+        
+
+<section> 
+  <div style="text-align: justify;">
+    <u>Point</u>: A point is that which has position but no magnitude. <br>
+    <br><br>
+    <p style="font-size:80%">
+    Basically what it means is that the only property that a point has is its position. 
+    It has no property called length or area or volume – it only has position 
+    (similar to the case that a 'color' has no taste, it has only the property of 'color' like green, red etc.; <br>
+    or like the case that a 'sunset' has no mass, it can have time or brightness values 
+    but it is meaningless to ask for the mass of a sunset).
+    </p>
+    </div>
+
+
+</section>
+
+<section>
+  <p style="text-align: justify;font-size: 70%;">
+    Try to zoom in on the point shown in the next slide as a blue circle or dot.
+    You will find that although you are zooming in, the size of the dot does not change because it is a point 
+    and it is not supposed to have a 'size'. 
+    the dot is used for our convenience to locate the point, because an actual theoretical point will 
+    not be visible to us. 
+    <br><br>
+
+    You will also notice numbers associated with the point given in brackets. 
+    The position of a single entity in an infinite universe is again meaningless (try to imagine a point in empty space,
+    there is no point in saying that it is here or it is there, for we cannot say anything about its position 
+    because we have no landmark/marker to compare it with). 
+    Thus, if we need to specify position of a point, we have to specify it with respect to a landmark 
+    i.e. another point which we take to be fixed for all time unlike our original point which can move. 
+    This fixed point or landmark is the origin.
+  </p>
+</section>
+
+<section data-background-iframe="SHM/GGBpoint.html"
+          data-background-interactive>
+</section>
+
+
+<section>
+  <p style="text-align: justify;">
+    
+  </p>
+</section>
+
+
+<!-- 
+  <section data-markdown="SHM\slide 4.md"> </section>    
+<section>
+  <p style="font-size:50%;text-align: justify;">
+    Basically what it means is that the only property that a point has is its position. 
+    It has no property called length or area or volume – it only has position 
+    (similar to the case that a 'color' has no taste, it has only the property of 'color' like green, red etc.; <br>
+    or like the case that a 'sunset' has no mass, it can have time or brightness values 
+    but it is meaningless to ask for the mass of a sunset).
+    </p>
+  <iframe src="SHM/GGBpoint.html" class="r-stretch" scrolling="no"> </iframe>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section> 
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<script> 
+
+var x = 10;
+var y = 20;
+var z = x + y;
+document.getElementById("demo").innerHTML = z;
+</script>
+
+<script type="text/javascript">
+
+function rInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+
+let a = new Array(5)
+var i;
+for (i = 0; i <= 4; i++) {
+
+ a[i] = rInt(-99,99);
+}
+
+console.log(a[0]);
+
+
+     let u = math.matrix([[a[0], a[1]], [a[2], math.complex(a[3], -a[4])]]) ;
+
+     let ca = nj.arange(6).reshape(2,3).T;// 
+
+     let cb = nj.random([2,3]);// 
+     let c = "[[" + String(cb).split("[[")[1].split("]]")[0] + "]]" ;
+     console.log(c);
+     //let cc = String(c)
+     //let ccc = cc.substring(6, cc.length-1)
+
+
+      var toPut = document.getElementById("demo1")
+    toPut.innerHTML += math.parse(String(u)).toTex();
+    toPut.innerHTML += math.parse(c).toTex();
+</script>
+
+       Slide Three
+
+</section>
+
+<section > 
+  <h3> For the four forlorn foresters</h3>
+</section>
+
+
+<section data-markdown="Slide1-3.md"> </section>
+
+   -->
+
+
+
+
+
+      </div>
+    </div>
+<!-- **********************************************************************************************  -->
+<!-- **********************************************************************************************  -->
+
+
+    <!-- The default Plugins  -->
+    <script src="../revealJS/dist/reveal.js"></script>
+    <script src="../revealJS/plugin/notes/notes.js"></script>
+    <script src="../revealJS/plugin/markdown/markdown.js"></script>
+    <script src="../revealJS/plugin/highlight/highlight.js"></script>
+
+    <!-- The Animate Plugin  
+    <script src="../revealJS/plugin/reveal.js-plugins-master/animate/plugin.js"></script>
+    <script src="../revealJS/plugin/reveal.js-plugins-master/animate/svg.min.js"></script>
+    -->
+
+
+
+    
+     
+    
+
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+      });
+
+      // Reveal.initialize({ src: '../revealJS/plugin/external.js', condition: function() { return !!document.querySelector( '[data-external]' ); } },)
+
+       
+    </script>
+
+
+
+
+
+  </body>
+</html>
+
