@@ -1,0 +1,204 @@
+/* -----------this part is to get font------------ */
+@import url('https://fonts.googleapis.com/css?family=Literata&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cardo&display=swap');
+/* ------------------------------------------------------------------------ */
+
+/* ------- configure output display ------
+
+.output, .text_cell_render, .output_area, .cell, .defns {
+    
+    background-color: silver;
+ 
+}
+ */
+/* +++++++ font size ++++++++++++ */
+
+
+
+.defns, .bodytext, .examples, .NB, .questions {
+    font-size:80%;
+}
+
+#examples {
+    font-size: 1.1em !important;
+}
+/* ------------------------------------------------------------------------ */
+/* flex-direction: row; flex-wrap: wrap;  sometime this option also helps */
+
+
+/* -------- to make input cell grey ------*/
+.CodeMirror {
+    background-color: rgb(152, 193, 193);
+
+} 
+/* ------------------------------------------------------------------------ */
+
+ /* ---------- Headings ----------
+
+Removed to avoid conflict
+
+h1,h2, h3, h4 {
+    text-indent: 0%;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 100%;
+    color: rgb(0, 51, 51);
+    
+    background-color: rgb(100, 150, 120) ;
+    padding: 1% ;
+    border: 2px solid rgb(51, 102, 0) ;
+}
+
+h3{
+        text-decoration: underline;
+}
+*/
+
+/* ------------------------------------------------------------------------ */
+
+/* ================== USER DEFINED ===================== */
+
+
+.defns {
+    text-indent: 2%;
+    font-family: 'Literata', serif;
+    
+
+    text-align: justify;
+    text-justify: inter-word;
+    line-height:130%;
+    padding-left: 1% ;
+    padding-right: 1% ;
+ 
+}
+
+.bodytext{
+    text-indent: 2%;
+    font-family: 'Literata', serif;
+
+
+    text-align: justify;
+    text-justify: inter-word;
+    line-height:130%;
+    padding-left: 1% ;
+    padding-right: 1% ;
+ 
+}
+
+#examples, .examples {
+    font-family: 'Literata', serif;
+    text-align: justify !important;
+    /* font-weight: bold; */
+
+    padding-left: 1% ;
+    padding-right: 1% ;
+ 
+}
+
+
+.NB {
+    background-color: dimgray;
+    color: white; /* font colour */
+    text-indent: 2%;
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: 'Montserrat', sans-serif;
+
+    padding-left: 1% ;
+    padding-right: 1% ;
+ 
+}
+
+.questions {
+    background-color: rgb(67, 76, 86) ;
+    color: honeydew !important;
+    text-indent: 0%;
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: 'Cardo', serif;    
+
+    padding-left: 1% ;
+    padding-right: 1% ;
+
+}
+
+/*  ---- for putting lines ------*/
+
+.horizontal_line {
+        border-bottom: 2px solid grey;
+}
+/* ----------------------------------------------------*/
+
+
+.MJ_Display { 
+    text-align: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #c3c3c3;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
+}
+
+
+
+
+.btn {
+    cursor: pointer;
+	position: relative;
+	padding: 1.5rem 2.5rem;
+	border-radius: 3.5rem;
+	line-height: 1.5rem;
+	font-size: 90%;
+	font-weight: 600;
+	
+	border: 1px solid #012880;
+	background-image: linear-gradient(-180deg, #FF89D6 0%, #C01F9E 100%);
+	box-shadow: 0 1rem 1.25rem 0 rgba(22,75,195,0.50),
+							0 -0.25rem 1.5rem rgba(110, 15, 155, 1) inset,
+							0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
+							0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+}
+.btn span {
+	color: transparent;
+	background-image: linear-gradient(0deg, #EE82DA 0%, #FEFAFD 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+}
+.btn::before {
+	content: "";
+	display: block;
+	height: 0.25rem;
+	position: absolute;
+	top: 0.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 7.5rem);
+	background: #fff;
+	border-radius: 100%;
+	
+	opacity: 0.7;
+	background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+.btn::after {
+	content: "";
+	display: block;
+	height: 0.25rem;
+	position: absolute;
+	bottom: 0.75rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: calc(100% - 7.5rem);
+	background: #fff;
+	border-radius: 100%;
+	
+	filter: blur(1px);
+	opacity: 0.05;
+	background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+
+.btn:hover {background: #eee;}
