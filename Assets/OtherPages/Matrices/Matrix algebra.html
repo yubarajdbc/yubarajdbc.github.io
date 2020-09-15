@@ -1,174 +1,555 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Matrix - Basics</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="../../revealJS/dist/reset.css">
-    <link rel="stylesheet" href="../../revealJS/dist/reveal.css">
-    <link rel="stylesheet" href="../../revealJS/dist/theme/black.css" id="theme">
+  <title>Matrix - Basics</title>
 
-    <!-- Theme used for syntax highlighted code -->
-    <link rel="stylesheet" href="../../revealJS/plugin/highlight/monokai.css" id="highlight-theme">
+  <link rel="stylesheet" href="../../revealJS/dist/reset.css">
+  <link rel="stylesheet" href="../../revealJS/dist/reveal.css">
+  <link rel="stylesheet" href="../../revealJS/dist/theme/black.css" id="theme">
 
-                          <!--    My embellishments  -->
-<!--    for math-->
-    <script src=" ../../Math-JS/math.js" type="text/javascript"></script>
-    <script src=" ../../Math-JS/numjs.min.js" type="text/javascript"></script>
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="../../revealJS/plugin/highlight/monokai.css" id="highlight-theme">
 
-    <script src="../../revealJS/plugin/math/math.js"></script>
+  <!--    My embellishments  -->
+  <!--    for math-->
+  <script src=" ../../Math-JS/math.js" type="text/javascript"></script>
+  <script src=" ../../Math-JS/numjs.min.js" type="text/javascript"></script>
+
+  <script src="../../revealJS/plugin/math/math.js"></script>
 
 
-    <!-- This mathjax configuration is required to make equation numbering work
+  <!-- This mathjax configuration is required to make equation numbering work
     The links are broken, i.e. they do not point to the correct location.
     -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
       TeX: { equationNumbers: { autoNumber: "AMS" } },
       });
     </script>
 
-    <link rel="stylesheet" href="CSS_Matrix.css">
+  <link rel="stylesheet" href="CSS_Matrix.css">
 
-  </head>
-  <body>
+</head>
+
+<body>
 
 
-<!-- **********************************************************************************************  -->
-<!-- **********************************************************************************************  -->
-<!-- THE SLIDES portion  -->
-<div class="reveal">
-  <div class="slides">
- <!-- ----------------------------------------------------------------------  --> 
- <!-- ======================================================================  --> 
- <!-- **********************************************************************  -->   
-<section data-background-color="#202060" > 
-    <h1 style="color:rgb(174, 222, 135);"> 
-      Matrix Algebra 
-      <br><br>
-       <p style="color:burlywood; font-size:70%">Introduction</p> 
-       <p style="color:rgb(174, 222, 135); font-size:50%">Yubaraj Sharma</p> 
-    </h1> 
-</section>
- <!-- ----------------------------------------------------------------------  -->   
-<section> 
-  <h2 style=> Syllabus </h2>
-  <div class="defns" ; style="line-height:1.5;margin:0;text-indent:0" >
-    Different types of matrices,
-    <br> properties of symmetric, skew- symmetric, Hermitian and skew-Hermitian matrices.
-    <br> Characteristic equation, eigenvalues and eigenvectors of a matrix and 
-    <br> diagonalization of matrix (only for $2 \times 2$ matrices).
+  <!-- **********************************************************************************************  -->
+  <!-- **********************************************************************************************  -->
+  <!-- THE SLIDES portion  -->
+  <div class="reveal">
+    <div class="slides">
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- ======================================================================  -->
+      <!-- **********************************************************************  -->
 
-</defns>
-    
-<p class ="horizontal_line"> </p>
-</section>
- <!-- ----------------------------------------------------------------------  -->   
-<section> 
-  <h2> Matrices  </h2>
-  <div style="text-align: justify;">
-    
-    <p style="font-size:80%">
-      <div class ="defns">
-        A set consisting of $m\times n$  numbers, real or complex, arranged in a 
-        ordered rectangular array of $m$ rows and $n$ columns ($m$ and $n$ being natural numbers)
-        is called a $m\times n$ matrix 
-        (read as 'm by n' matrix). These numbers in the array or matrix are called the 
-        elements of the matrix; the plural of which is matrices. 
+      <!-- the watermark -->
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spirax&display=swap');
+      </style>
+      <div style="font-size: 150%; color:rgba(163, 248, 51, 0.048); transform-origin: 0 0; 
+ transform: rotate(-45deg) skewY(30deg);z-index: 100; text-align: left;font-family: 'Spirax', cursive;">
+        ` <br> <br> <br> <br> <br> <br> <br> <br>
+        Yubaraj Sharma <br> <br> DBC,T
       </div>
-    </p>
-    </div>
-</section>
- <!-- ----------------------------------------------------------------------  -->    
- <section>
-  <div class ="defns">
-    The  general representation of a matrix of $m$ rows and $n$ columns 
-    is given as:
- 
-    $$\begin{align} \begin{bmatrix} 
-    a_{1 1} & a_{1 2} & a_{1 3} & \ldots & a_{1 n} \\ 
-    a_{2 1} & a_{2 2} & a_{2 3} & \ldots & a_{2 n} \\ 
-    \vdots & \vdots & \vdots & \ddots & \vdots \\ 
-    a_{m 1} & a_{m 2} & a_{m 3} & \ldots & a_{m n} \\ 
-    \end{bmatrix}_{\hspace{0.1cm} \large m \times n} 
-    \label{mat1}
-    \end{align} 
-    $$
+      <!-- -------------------------------------------------------------------------  -->
+      <section data-background-color="#202060">
+        <h1 style="color:rgb(174, 222, 135);">
+          Matrix Algebra
+          <br><br>
+          <p style="color:burlywood; font-size:70%">Introduction</p>
+          <p style="color:rgb(174, 222, 135); font-size:50%">Yubaraj Sharma</p>
+        </h1>
+      </section>
+      <!-- -------------------------------------------------------------------------  -->
 
-    where, the numbers $a_{1 1}, a_{2 2}, a_{1 3} \ldots $ 
-    represent the elements (or components) of the matrix, 
-    the subscript denote the position of the elements, 
-    the first number representing the row number and 
-    the second number representing the column number 
-    occupied by the given element. <br>
-    Thus, $a_{i j}$ represents the element located at the $i^{th}$ 
-    row and $j^{th}$ column. 
-  </div>
-</section>
- <!-- ----------------------------------------------------------------------  -->  
- <section> 
-  <div class ="defns">
-  <br> <p> Matrices are usually denoted by capital letters of the English alphabets and the 
-    elements by the corresponding lowercase letters with appropriate subscripts. </p> 
-    <p> The size (total rows and columns) of a matrix is usually refered to as its 
-      <em> order </em>;      thus, the general matrix shown in equation  $\eqref{mat1}$
-     would be called a matrix of order $ m\times n$.   </p>
-</div>
-</section>
- <!-- ----------------------------------------------------------------------  -->  
- <section> 
-  <div class ="defns">
-    <p> A matrix can also be represented in a compact format as follows:</p>
-$$ \begin{align}
-A = \Big[ a_{i j}\Big]_{ m \times n} \hspace{0.1cm} ; 
-\begin{matrix} i=1,2,3, \ldots, m \\ j=1,2,3, \ldots,n \end{matrix} 
-\end{align}$$
-Or as, $ A = \left[ a_{i j}\right]_{ m \times n} $
-where, as before, $a_{i j}$ represents the element located at the $i^{th}$ row and $j^{th}$ column; 
-in other words, $a_{i j}$ it is the $(i,j)^{th}$ element of the matrix A.
-</div>
-</section>
- <!-- ----------------------------------------------------------------------  -->  
- <section> 
-  <div class ="defns">
-Note that sometimes round brackets ( ) or double bars $\begin{Vmatrix} \hspace{0.1cm} \end{Vmatrix}$ 
-are also used to denote matrices instead of square brackets used herein. 
-<br><br>
-<b> Note: </b> A sub-matrix of a given matrix is the matrix obtained by removing any number of rows and/or 
-columns from the original.
-</div>
-</section>
- <!-- ----------------------------------------------------------------------  -->  
-<section>
-  <div class="examples">
-    <b> Examples of matrices: <br><br> </b>  
-$  
-  \begin{bmatrix}1 & 2 & 3\\4 & 5 & 6\\7 & 8 & 9\end{bmatrix}_{\,3 \times 3}\\[3em]
-  \;\begin{bmatrix}3 & 0 & 2.1\\9.5 & 1 & 9\end{bmatrix}_{\,2 \times 3}\\[3em]
-  \;\begin{bmatrix}1.0 + 3.1 i & 9 & -4.0\\4 & 1.9 & 7\\-5 & 3.1 + 3.0 i & 1
-  \end{bmatrix}_{\,3 \times 3}
-$
-<p class ="horizontal_line"> </p>
-<br>
-</div>
-</section>
-<!-- ----------------------------------------------------------------------  -->  
-<section>
-  <div class="examples">
-    <b> Examples of matrices: <br><br> </b>  
-$ 
-  \;\begin{bmatrix}12 & 19 & 12 & -5 & 8\\0 & 19 & -3 & 17 & -1\\0 & 12 & 0 & -2 & 0
-  \end{bmatrix}_{\,3 \times 5}\\[3em]
-  \;\begin{bmatrix}71 & 65\\13 & 40\end{bmatrix}_{\,2 \times 2}\\[3em]
-  \;\begin{bmatrix}26 & 47 & 92 & 88\end{bmatrix}_{\,1 \times 4}\;\; 
-$
-<p class ="horizontal_line"> </p>
-<br>
-</div>
-</section>
-<!-- ----------------------------------------------------------------------  
+      <section>
+        <h2 style=> Syllabus </h2>
+        <p class="horizontal_line"> </p>
+        <div class="defns" ; style="line-height:1.5;margin:0;text-indent:0">
+          Different types of matrices,
+          <br> properties of symmetric, skew- symmetric, Hermitian and skew-Hermitian matrices.
+          <br> Characteristic equation, eigenvalues and eigenvectors of a matrix and
+          <br> diagonalization of matrix (only for $2 \times 2$ matrices).
+
+          </defns>
+
+          <p class="horizontal_line"> </p>
+      </section>
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- -------------------------------------------------------------------------  -->
+      <section>
+        <section>
+          <h2> Matrices </h2>
+          <p class="horizontal_line"> </p>
+          <div style="text-align: justify;">
+
+            <p style="font-size:80%">
+              <div class="defns">
+                A set consisting of $m\times n$ numbers, real or complex, arranged in a
+                ordered rectangular array of $m$ rows and $n$ columns ($m$ and $n$ being natural numbers)
+                is called a $m\times n$ matrix
+                (read as 'm by n' matrix). These numbers in the array or matrix are called the
+                elements of the matrix; the plural of which is matrices.
+              </div>
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div class="defns" style="font-size:70%">
+            The general representation of a matrix of $m$ rows and $n$ columns
+            is given as:
+
+            $$\begin{align} \begin{bmatrix}
+            a_{1 1} & a_{1 2} & a_{1 3} & \ldots & a_{1 n} \\
+            a_{2 1} & a_{2 2} & a_{2 3} & \ldots & a_{2 n} \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            a_{m 1} & a_{m 2} & a_{m 3} & \ldots & a_{m n} \\
+            \end{bmatrix}_{\hspace{0.1cm} \large m \times n}
+            \label{mat1}
+            \end{align}
+            $$
+
+            where, the numbers $a_{1 1}, a_{2 2}, a_{1 3} \ldots $
+            represent the elements (or components) of the matrix,
+            the subscript denote the position of the elements,
+            the first number representing the row number and
+            the second number representing the column number
+            occupied by the given element. <br>
+            Thus, $a_{i j}$ represents the element located at the $i^{th}$
+            row and $j^{th}$ column.
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div class="defns">
+            <br>
+            <p> Matrices are usually denoted by capital letters of the English alphabets and the
+              elements by the corresponding lowercase letters with appropriate subscripts. </p>
+            <p> The size (total rows and columns) of a matrix is usually refered to as its
+              <em> order </em>; thus, the general matrix shown in equation $\eqref{mat1}$
+              would be called a matrix of order $ m\times n$. </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div class="defns">
+            <p> A matrix can also be represented in a compact format as follows:</p>
+            $$ \begin{align}
+            A = \Big[ a_{i j}\Big]_{ m \times n} \hspace{0.1cm} ;
+            \begin{matrix} i=1,2,3, \ldots, m \\ j=1,2,3, \ldots,n \end{matrix}
+            \end{align}$$
+            Or as, $ A = \left[ a_{i j}\right]_{ m \times n} $
+            where, as before, $a_{i j}$ represents the element located at the $i^{th}$ row and $j^{th}$ column;
+            in other words, $a_{i j}$ it is the $(i,j)^{th}$ element of the matrix A.
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div class="defns">
+            Note that sometimes round brackets ( ) or double bars $\begin{Vmatrix} \hspace{0.1cm} \end{Vmatrix}$
+            are also used to denote matrices instead of square brackets used herein.
+            <br><br>
+            <b> Note: </b> A sub-matrix of a given matrix is the matrix obtained by removing any number of rows and/or
+            columns from the original.
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div class="examples">
+            <b> Examples of matrices: <br><br> </b>
+            $
+            \begin{bmatrix}1 & 2 & 3\\4 & 5 & 6\\7 & 8 & 9\end{bmatrix}_{\,3 \times 3}\\[3em]
+            \;\begin{bmatrix}3 & 0 & 2.1\\9.5 & 1 & 9\end{bmatrix}_{\,2 \times 3}\\[3em]
+            \;\begin{bmatrix}1.0 + 3.1 i & 9 & -4.0\\4 & 1.9 & 7\\-5 & 3.1 + 3.0 i & 1
+            \end{bmatrix}_{\,3 \times 3}
+            $
+            <p class="horizontal_line"> </p>
+            <br>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div class="examples">
+            <b> Examples of matrices: <br><br> </b>
+            $
+            \;\begin{bmatrix}12 & 19 & 12 & -5 & 8\\0 & 19 & -3 & 17 & -1\\0 & 12 & 0 & -2 & 0
+            \end{bmatrix}_{\,3 \times 5}\\[3em]
+            \;\begin{bmatrix}71 & 65\\13 & 40\end{bmatrix}_{\,2 \times 2}\\[3em]
+            \;\begin{bmatrix}26 & 47 & 92 & 88\end{bmatrix}_{\,1 \times 4}\;\;
+            $
+            <p class="horizontal_line"> </p>
+            <br>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section data-transition="convex-in concave-out">
+          <div id="bgdiv001" style='font-size:80%;'>
+            What is the dimension of the following matrix?
+
+            <br>
+            <!--- The button to create new matrix; The button style is defined in css matrix -->
+            <button class="btn" onclick='genMatrix("matrixDim");  MTelemenst(["answer","rowmval","colnval"])'>
+              Try with a new matrix
+            </button>
+            <br>
+            <!--  The placeholder for the matrix -->
+            <p id="matrixDim" style="font-size:80%; max-height:20%;display: inline-block;">
+            </p><br>
+            <!-- 
+          <script>
+            // run function to start the slide with already a matrix already visible
+            // use anonymous function to call the real function, 
+            // directon calling function causes loading issues
+            window.onload = function () {
+              genMatrix("matrixDim", [])
+            }
+          </script>
+        -->
+            <!-- The input area -->
+            m = <input type="number" id="rowmval" name="mvalue" style="width:10%; font-size:120%;">
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            n = <input type="number" id="colnval" name="nvalue" style="width:10%; font-size:120%;">
+
+            <!-- The press button to check area -->
+            <br><br>
+            <button class="btn" onclick='checkMatrixMN("answer",["rowmval","colnval"])'> Press button to check
+              answer</button>
+            <br>
+
+            <!-- The answer will show here -->
+            <p id="answer" style="border-radius: 8px; box-shadow: inset 0 0 0 7px rgba(255,255,255,.5); 
+            background-color: rgb(71, 71, 71);padding: 0.5% 1% 2% 1%; "> </p>
+
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section data-transition="convex">
+          <div id="bgdiv002" style="font-size:80%; ">
+            Find elements of a matrix!
+            <br>
+
+            <!--- The button to create new matrix; The button style is defined in css matrix -->
+            <button class="btn"
+              onclick='genMatrix("matrixDim1");createM_Element();MTelemenst(["elementval01","answer01"])'>
+              Try with a new Matrix</button>
+            <br>
+            <!--  The placeholder for the matrix -->
+            <p style="display: inline;">A = </p>
+            <p id="matrixDim1" style="font-size:80%; height:20%;max-height:25%;display: inline-block;">
+            </p> <br>
+
+            <!-- Question about element -->
+            <p id="checkElement01" style="display: inline;"> </p>
+            &nbsp;
+            <!-- The input area -->
+            <input type="number" id="elementval01" name="mvalue" style="width:10%; font-size:120%;">
+
+
+            <!-- The press button to check area -->
+            <br><br>
+            <button class="btn" onclick='checkelement()'> Press button to check
+              answer</button>
+            <br>
+
+            <!-- The answer will show here -->
+            <p id="answer01" style="border-radius: 8px; box-shadow: inset 0 0 0 7px rgba(255,255,255,.5); 
+            background-color: rgb(71, 71, 71);padding: 0.5% 1% 2% 1%; "> </p>
+
+          </div>
+        </section>
+      </section>
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- -------------------------------------------------------------------------  -->
+      <section>
+        <!------------>
+
+        <section>
+          <h2> Basic operations on a matrix </h2>
+          <p> Or </p>
+          <h2>what can we do with matrices?</h2>
+          <p class="horizontal_line"> </p>
+          <p> Turns out we can check equality, add, subtract and multiply them!</p>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Equality of Matrices
+          <p class="horizontal_line"> </p>
+          <div class="defns">
+            Two matrices are defined to be equal matrices
+            only if they have the same order/size (i.e. they have same number of rows and columns)
+            and the correponding elements (i.e. the elements at identical locations) are equal.<br>
+            Let $A = [a_{ij}]_{m \times n}$ and $B = [b_{ij}]_{p \times q}$ be two matrices. <br>
+            Then, $A=B \quad \Rightarrow m=p \text{ and } n=q ; \quad\text{ and }\quad
+            a_{i j} = b_{i j}, \hspace{0.2cm} \forall \hspace{0.1cm} (i,j).$
+
+            <p style="text-indent:0;">
+              In simpler words, two matrices are considered equal if they are completely identical in terms of size and
+              elements(in all respects).
+            </p>
+            </defns>
+        </section>
+
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples">
+              <b>Examples on the equality of matrices: </b> <br><br>
+            </p>
+            <p id="examples" style="line-height:2; font-size: 70%!important;">
+
+              If $ A = \left[\begin{matrix}1.0 + 3.1 i & 8 & -4.0\\3 & 1.9 & 2\\-6 & 3.1 + 3.0 i & 6\end{matrix}\right]
+              $ <br><br> and $\;
+              B = \left[\begin{matrix}5 & 0 & 0 & 0 & 17\\16 & 0 & 20 & 0 & -3\\18 & -1 & 8 & 11 &
+              0\end{matrix}\right] $ <br><br>
+              then, $A \ne B$, because the sizes of the two matrices do not match. <br><br>
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples">
+              <b>Examples on the equality of matrices: </b> <br><br>
+            </p>
+            <p id="examples" style="line-height:2; font-size: 70%!important;">
+
+              If $ A = \left[\begin{matrix}1 & 2 & 3\\4 & 5 & 6\\7 & 8 & 9\end{matrix}\right] $ <br><br>
+              and $\; B = \left[\begin{matrix}0 & 0 & 17\\20 & 0 & -3\\8 & 11 & 0\end{matrix}\right] $ <br><br>
+              then, $A \ne B$, because the corresponding elements of the two matrices
+              do not match, although their sizes match.
+            </p>
+          </div>
+        </section>
+
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples">
+              <b>Examples on the equality of matrices: </b> <br><br>
+            </p>
+            <p id="examples" style="line-height:2; font-size: 70%!important;">
+
+              If $ A = \left[\begin{matrix}9 & 9 & 2.1\\9.5 & 4 & 0\end{matrix}\right] $ <br><br>
+              and $\; B = \left[\begin{matrix}9 & 9 & 2.1\\9.5 & 4 & 0\end{matrix}\right] $ <br><br>
+              then, $A = B$,
+              because both the size and the corresponding elements of the two matrices are same/equal/identical.
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples">
+              <b>Application of the equality of matrices: </b> <br>
+            </p>
+            <p id="examples" style="line-height:1.5;font-size: 60%!important;">
+              Let us assume that we have a system of linear equations given by:
+              $$\begin{align*}
+              <br> - 2 x + 3 y &= -1
+              \newline
+              <br> 5 x + 4 y &= 3
+              \end{align*} $$
+              we can write the above compactly in matrix notation as:
+              <br> $ \left[\begin{matrix}- 2 x + 3 y\\5 x + 4 y\end{matrix}\right] $ = $
+              \left[\begin{matrix}-1\\3\end{matrix}\right] $
+              <br> The concept of matrix equality allows us to convert this
+              matrix equation back into the above two simultaneous linear equations.
+            </p>
+            <p class="horizontal_bottom_line"> </p>
+            <br>
+          </div>
+        </section>
+
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+
+            <p id="examples" style="line-height:1.5;font-size: 60%!important;">
+              The previous matrix equation can further be simplified in notation by employing
+              symbols to represent the matrices.
+              <br>For example, if we define:
+              $A = \left[\begin{matrix}- 2 x + 3 y\\5 x + 4 y\end{matrix}\right] $ and
+              $B = \left[\begin{matrix}-1\\3\end{matrix}\right] $;
+              <br>then, the above set of simultaneous equations can simply be
+              represeted by the matrix equation: $A = B$.
+              <br><br>Although, this might seem trivial, but, consider the case
+              when we have tens of simultaneous equations instead of the two shown
+              in our example, then the matrix notation can save a lot of
+              space and energy during documentation. Additionaly, matrices can be
+              helpful in solving the simultaneous equations themselves, instead of
+              just simplifying the notations.
+            </p>
+            <p class="horizontal_bottom_line"> </p>
+            <br>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Negative of a matrix
+          <p class="horizontal_line"> </p>
+          <div class="defns">
+            The negative of a matrix $A$ is another matrix denoted by $-A$,
+            with all the elements same as $A$ but with their signs reversed, <br>
+
+            i.e. $ \hspace{1.5 cm} \text{if} \hspace{1 cm} A = [a_{ij}]_{m \times n} \\
+            \text{then, } -A = [-a_{ij}]_{m \times n} $
+
+            </defns>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples">
+              <b>Examples of negative of matrices: </b> <br><br>
+            </p>
+            <p id="examples" style="line-height:2;font-size: 60%!important;">
+
+              If $ A = \left[\begin{matrix}1 & 1\\1 & 1\end{matrix}\right] \quad $
+              then, $\quad -A =\left[\begin{matrix}-1 & -1\\-1 & -1\end{matrix}\right] $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples">
+              <b>Examples of negative of matrices: </b> <br><br>
+            </p>
+            <p id="examples" style="line-height:2;font-size: 60%!important;">
+              If $ A = \left[\begin{matrix}1.0 + 3.1 i & 8 & -4.0\\3 & 1.9 & 2\\-6 & 3.1 + 3.0 i & 6\end{matrix}\right]$
+              <br><br>
+              then, $\quad -A =\left[\begin{matrix}-1.0 - 3.1 i & -8 & 4.0\\-3 & -1.9 & -2\\6 & -3.1 - 3.0 i &
+              -6\end{matrix}\right] $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples">
+              <b>Examples of negative of matrices: </b> <br><br>
+            </p>
+            <p id="examples" style="line-height:2;font-size: 60%!important;">
+              If $ A = \left[\begin{matrix}5 & 0 & 0 & 0 & 17\\16 & 0 & 20 & 0 & -3\\18 & -1 & 8 & 11 &
+              0\end{matrix}\right]$<br><br>
+              then, $\quad -A =\left[\begin{matrix}-5 & 0 & 0 & 0 & -17\\-16 & 0 & -20 & 0 & 3\\-18 & 1 & -8 & -11 &
+              0\end{matrix}\right] $
+              <br><br>
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Addition of matrices
+          <p class="horizontal_line"> </p>
+          <div class="defns" ; style="line-height:130%;">
+
+            Addition of two matrices is <em> only </em> defined if the two matrices are of the same order/size;
+            unequal-sized matrices cannot be added. <br>
+
+            If the two given matrices are conformable for addition (i.e. have the same size),
+            then their sum is a new matrix of the same size whose elements are the sum of the
+            corresponding elements of the two given matrices.
+            </defns>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div class="defns" ; style="line-height:130%;">
+            Let $ A = [a_{ij}]_{m \times n}$ and $ B = [b_{ij}]_{m \times n}$ be two conformable matrices;
+            <br> then, their sum $A+B$ produces a new matrix (say) $C$ such that: <br>
+            $ C = A + B = [a_{i j} + b_{i j}]_{m \times n} = [c_{i j}]_{m \times n}$
+            </defns>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples" style="text-align: left !important;">
+            <p class="examples">
+              <b>Examples on the addition of matrices: </b> <br><br>
+            </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}a_{1 1} & a_{1 2} & a_{1 3}\\a_{2 1} & a_{2 2} & a_{2 3}\\a_{3 1} & a_{3 2} & a_{3
+              3}\end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\quad$
+              and
+              $\quad B = \begin{bmatrix}b_{1 1} & b_{1 2} & b_{1 3}\\b_{2 1} & b_{2 2} & b_{2 3}\\b_{3 1} & b_{3 2} &
+              b_{3 3}\end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\quad$ <br><br>
+              then, $ A + B = \begin{bmatrix} a_{1 1} +b_{1 1} & a_{1 2} + b_{1 2} & a_{1 3}+ b_{1 3}\\ a_{2 1} +b_{2 1}
+              & a_{2 2} + b_{2 2} & a_{2 3}+ b_{2 3}\\ a_{3 1} +b_{3 1} & a_{3 2} + b_{3 2} & a_{3 3}+ b_{3 3}
+              \end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\hspace{0.5cm} $
+            </p>
+          </div>
+
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples" style="text-align: left !important;">
+            <p class="examples">
+              <b>Examples on the addition of matrices: </b> <br><br>
+            </p>
+
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}1 & 2 & 3\\4 & 5 & 6\\7 & 8 & 9\end{bmatrix}_{\large \hspace{0.05cm}3 \times
+              3}\quad$ and
+              $\quad B = \begin{bmatrix}1 & 4 & 7\\2 & 5 & 8\\3 & 6 & 9\end{bmatrix}_{\large \hspace{0.05cm}3 \times
+              3}\quad$
+              then,<br>
+               $ A + B = \begin{bmatrix} 1 +1 & 2 + 4 & 3+ 7\\ 4 +2 & 5 + 5 & 6+ 8\\ 7 +3 & 8 + 6 & 9+ 9
+              \end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\hspace{0.5cm} $
+              $ = \quad \begin{bmatrix}2 & 6 & 10\\6 & 10 & 14\\10 & 14 & 18\end{bmatrix}_{\large \hspace{0.05cm}3
+              \times 3}\quad$
+            </p>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples" style="text-align: left !important;">
+            <p class="examples">
+              <b>Examples on the addition of matrices: </b> <br><br>
+            </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}1.0 + 3.1 i & 8 & -4.0\\3 & 1.9 & 2\end{bmatrix}_{\large \hspace{0.05cm}2 \times
+              3}\quad$ and
+              $\quad B = \begin{bmatrix}5 & 0 & 0\\16 & 0 & 20\end{bmatrix}_{\large \hspace{0.05cm}2 \times 3}\quad$
+              then,
+              $ A + B = \begin{bmatrix} (1.0 + 3.1 i )+5 & 8 + 0 & ( -4.0)+ 0\\ 3 +16 & 1.9 + 0 & 2+ 20
+              \end{bmatrix}_{\large \hspace{0.05cm}2 \times 3}\hspace{0.5cm} $
+              $ = \quad \begin{bmatrix}6.0 + 3.1 i & 8 & -4.0\\19 & 1.9 & 22\end{bmatrix}_{\large \hspace{0.05cm}2
+              \times 3}\quad$
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+
+
+        <!------------>
+      </section>
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- -------------------------------------------------------------------------  -->
+      <section>
+        <h2> This is all for now<br><br>
+          Check back after next class
+        </h2>
+      </section>
+      <!-- -------------------------------------------------------------------------  -->
+
+
+
+
+
+
+
+
+      <!-- -------------------------------------------------------------------------  
 
     <section data-background-iframe="SHM/GGBangle.html"  data-background-interactive>
     </section>
@@ -177,137 +558,12 @@ $
 function load_home() {
      document.getElementById("content").innerHTML='<object type="text/html" data="home.html" ></object>';
 }
-
-
-  ----------------------------------------------------------------------  --> 
-
-
-
-
-<section>
-  <div style="font-size:80%; ">
-  Test your knowledge <br>
-  What is the dimension of the following matrix?
-  
-<br>
-<!--- The button to create new matrix; The button style is defined in css matrix -->
-<button class="btn" onclick="genMatrix()">Test with a new matrix</button>
-
-<br>
-  <p id="matrixDim" style="font-size:80%; height:20%;max-height:25%;display: inline-block;">
-  </p>
-<br>
-  m = <input type="number" id="rowmval" name="mvalue" style="width:10%; font-size:120%;">  
-  &nbsp; &nbsp; &nbsp; &nbsp;
-  n = <input type="number" id="colnval" name="nvalue" style="width:10%; font-size:120%;">  
-
-<br>
-<button class="btn" onclick="checkMatrixMN()"> check </button>
-<br>
-
-<!-- The answer will show here -->
-<p id="answer" 
-style="border-radius: 8px; box-shadow: inset 0 0 0 7px rgba(255,255,255,.5);background-color: rgb(71, 71, 71);padding: 0.5% 1% 2% 1%; "> </p> 
+-->
 
 
 
 
-<script>
-  var AA
-  function rInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
-  
-    function createRndmMatrix() {
-    // the number of rows and columns
-    let m = rInt(1, 4)
-    let n = rInt(1, 6)
-    //create 2 dimensional array
-    let AA = Array.from(Array(m), () => new Array(n));
-    let i
-    let j 
-  
-      for (i = 0; i <= m-1; i++) {
-        for (j=0; j<=n-1; j++) {
-           AA[i][j] = rInt(-15,15)
-        } 
-      }
-//console.log(AA[0].length, AA.length)
-//console.log(m,n)
-//console.log("--------")
-
-  return AA
-
-  }
-
-var BB;
-BB = createRndmMatrix()
-document.getElementById("matrixDim").innerHTML = math.parse(String(math.matrix(BB))).toTex();
-
-function genMatrix() {
-    BB =  createRndmMatrix() 
-    document.getElementById("matrixDim").innerHTML = math.parse(String(math.matrix(BB))).toTex();
-
-// to render the text as mathjax
-    let m1 = document.getElementById("matrixDim");
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub,m1]);
-
-    // make the input boxes empty
-    document.getElementById("rowmval").value = "";
-    document.getElementById("colnval").value = "" ;
-    document.getElementById("answer").innerHTML = "";
-}
-
-
-function checkMatrixMN() {
-  var m,n, text;
-  // Get the value of the input field with id="rowmval"
-  m = document.getElementById("rowmval").value;
-  n = document.getElementById("colnval").value;
-
-  // If x is Not a Number or less than one or greater than 10
-  if (isNaN(m) || isNaN(n) || m=="" || n=="") {
-    text = "Input(s) is/are not a number or empty";
-  }  else if (m==BB.length && n==BB[0].length){
-    text = "Both $m$ and $n$ are Correct"
-  } else if (m==BB.length && n!=BB[0].length) {
-    text = "$m$ correct but $n$ incorrect"
-  } else if (m!=BB.length && n==BB[0].length) {
-    text = "$m$ incorrect but $n$ correct"
-  } else {
-    text = "Both $m$ and $n$ are incorrect"
-  }
-
-  document.getElementById("answer").innerHTML = text;
-// to render the text as mathjax
-  let m2 = document.getElementById("answer");
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub,m2]);
-}
-
-
-
-
-
-
-
-//let dimss = [ BB.length, BB[0].length ];
-//console.log("***********")
-//console.log(dimss)
-//console.log("++++++++++")
-//document.getElementById("matrixDim").innerHTML += String(dimss)
-
-  </script>
-</div>
-</section>
-
-
-<section>
-  <h2> This is all for now<br><br>
-    Check back after next class
-  </h2>
-  
-  </section>
-<!-- 
+      <!-- 
   <section data-markdown="SHM\slide 4.md"> </section>    
 <section>
   <p style="font-size:50%;text-align: justify;">
@@ -322,7 +578,7 @@ function checkMatrixMN() {
 
 
 
-
+  <script src="MatrixfindElements.js"></script>
 
 
 
@@ -399,63 +655,74 @@ console.log(a[0]);
 
 
 
-      </div>
     </div>
-<!-- **********************************************************************************************  -->
-<!-- **********************************************************************************************  -->
+  </div>
+  <!-- **********************************************************************************************  -->
+  <!-- **********************************************************************************************  -->
 
 
 
 
+  <!--     My SCRIPTS   -->
+  <script src="MatrixCreateMN.js"></script>
 
 
+  <!--     functions to be run on load   -->
+  <script>
+    // run function to make things visible at the start
+    window.onload = function () {
+      //This is to load the size of matrix interactive slide
+      genMatrix("matrixDim");
+      MTelemenst(["answer", "rowmval", "colnval"]);
+
+      //This is to load the get element of a matrix interactive slide
+      genMatrix("matrixDim1");
+      createM_Element();
+      MTelemenst(["elementval01", "answer01"])
+    }
+  </script>
 
 
+  <!-- The default Plugins  -->
+  <script src="../../revealJS/dist/reveal.js"></script>
+  <script src="../../revealJS/plugin/notes/notes.js"></script>
+  <script src="../../revealJS/plugin/markdown/markdown.js"></script>
+  <script src="../../revealJS/plugin/highlight/highlight.js"></script>
 
-
-
-
-
-
-    <!-- The default Plugins  -->
-    <script src="../../revealJS/dist/reveal.js"></script>
-    <script src="../../revealJS/plugin/notes/notes.js"></script>
-    <script src="../../revealJS/plugin/markdown/markdown.js"></script>
-    <script src="../../revealJS/plugin/highlight/highlight.js"></script>
-
-    <!-- The Animate Plugin  
+  <!-- The Animate Plugin  
     <script src="../../revealJS/plugin/reveal.js-plugins-master/animate/plugin.js"></script>
     <script src="../../revealJS/plugin/reveal.js-plugins-master/animate/svg.min.js"></script>
     -->
 
 
 
-    
-     
-    
-
-
-    <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        hash: true,
-        slideNumber: true,
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
-      });
-
-      // Reveal.initialize({ src: '../../revealJS/plugin/external.js', condition: function() 
-      // { return !!document.querySelector( '[data-external]' ); } },)
-
-       
-    </script>
 
 
 
 
 
-  </body>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+
+      transition: 'convex',
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath]
+    });
+
+    // Reveal.initialize({ src: '../../revealJS/plugin/external.js', condition: function() 
+    // { return !!document.querySelector( '[data-external]' ); } },)
+  </script>
+
+
+
+
+
+</body>
+
 </html>
-
