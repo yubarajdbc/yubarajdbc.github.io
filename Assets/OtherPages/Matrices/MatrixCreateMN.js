@@ -94,7 +94,7 @@ function startcelebrateCorrect(div2putfireworks, tym = 1000) {
    start celebration after 0.5 seconds */
   setTimeout(function () {
     document.getElementById(div2putfireworks).style.backgroundImage = 'url("https://i.gifer.com/WS2k.gif")';
-    document.getElementById(div2putfireworks).style.backgroundSize = '50% 70%';
+    document.getElementById(div2putfireworks).style.backgroundSize = '30% 50%';
     document.getElementById(div2putfireworks).style.backgroundRepeat = 'no-repeat';
   }, tym);
 }

@@ -23,38 +23,6 @@ h1,h2, h3, h4 {
 }
 
 
-/* ------------------------------------------------------------------------ */
-/* flex-direction: row; flex-wrap: wrap;  sometime this option also helps */
-
-
-/* -------- to make input cell grey ------*/
-.CodeMirror {
-    background-color: rgb(152, 193, 193);
-
-} 
-/* ------------------------------------------------------------------------ */
-
- /* ---------- Headings ----------
-
-Removed to avoid conflict
-
-h1,h2, h3, h4 {
-    text-indent: 0%;
-    font-family: 'Playfair Display SC', serif;
-    font-size: 100%;
-    color: rgb(0, 51, 51);
-    
-    background-color: rgb(100, 150, 120) ;
-    padding: 1% ;
-    border: 2px solid rgb(51, 102, 0) ;
-}
-
-h3{
-        text-decoration: underline;
-}
-*/
-
-/* ------------------------------------------------------------------------ */
 
 /* ================== USER DEFINED ===================== */
 
@@ -139,9 +107,21 @@ h3{
   align-content: center;
 }
 
+/* ---    input remove arrows  --- */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none!important;
+  margin: 0!important;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 
-
+/*      jelly   button */
 .btn {
     cursor: pointer;
 	position: relative;
