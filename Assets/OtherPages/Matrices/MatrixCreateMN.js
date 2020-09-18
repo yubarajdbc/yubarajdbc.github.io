@@ -11,17 +11,36 @@ function renderDjax(ID4convert) {
   MathJax.Hub.Queue(["Typeset", MathJax.Hub, m1]);
 }
 
+function genRndMatSize(ii=5,jj=7){
+  let matSize =[];
+  matSize[0] = math.randomInt(1, ii);
+  matSize[1] = math.randomInt(1, ii);
+  return matSize
+}
+
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 
-function genMatrix(ID2put01, ID2MT01) {
+function genMatrix(ID2put01, ID2MT01, ii, jj) {
   // ID2put01 is the ID of html element where the matrix is to be displayed
   // ID2MT01 is an array of html element IDs which are to be emptied (hence MT)
 
   // create a matrix
   //BB = createRndmMatrix();
+
+
   let m = math.randomInt(1, 5)
   let n = math.randomInt(1, 7)
+
+  // If input size is given then revert back to those values
+  if (ii !== undefined && ii !== null) {
+    m = ii
+  }
+
+  if (jj !== undefined && jj !== null) {
+    n = jj
+  }
+
   BB = math.randomInt([m, n], -25, 35)
 
   document.getElementById(ID2put01).innerHTML = math
@@ -34,6 +53,8 @@ function genMatrix(ID2put01, ID2MT01) {
   let xbx = document.getElementById(ID2put01).parentElement.id;
   stopcelebrate(xbx, 0)
   // console.log(xbx)
+
+  return BB
 }
 
 
@@ -131,12 +152,11 @@ function checkelement(IDin = "elementval01", IDout = "answer01") {
   let MatElmnt = document.getElementById(IDin).value;
   let answerx = BB[m - 1][n - 1];
   let text
-  
+
   // check whether correct or not
   if (isNaN(MatElmnt) || MatElmnt == "") {
     text = "Please input the value of element";
-  } 
-  else if (MatElmnt == answerx) {
+  } else if (MatElmnt == answerx) {
     text = "Your answer is correct";
     // get id of parent div and make it celebrate
     let xbx = document.getElementById(IDout).parentElement.id;
@@ -155,3 +175,100 @@ function checkelement(IDin = "elementval01", IDout = "answer01") {
 //console.log(dimss)
 //console.log("++++++++++")
 //document.getElementById("matrixDim").innerHTML += String(dimss)
+
+
+
+function MTinputMatrix(ID2put, mm = 2, nn = 3) {
+  var x = document.createElement("TABLE");
+
+  // Give unique ID for later retrieval
+  x.setAttribute("id", ID2put + "inputmatrix");
+
+  //x.setAttribute("class", "inputmatrix");
+  // x.style.border = "solid yellow";
+  //x.style.width = '100%';
+  //x.cellPadding='0';
+  //x.cellSpacing='0';
+  x.style = "width:70%;border-left:2px  solid white; border-right:2px  solid white; ";
+  //x.color = 'rgb(174, 222, 135)';
+  //x.border = '2px solid white';
+
+  var p001 = document.getElementById(ID2put);
+  p001.innerHTML='';
+  p001.appendChild(x);
+
+  // create 2D array to contain the values
+  let cellVal = Array.from(Array(mm), () => new Array(nn));
+  let inputID = Array.from(Array(mm), () => new Array(nn)); 
+
+  // number of rows
+  let rowVal = new Array(mm);
+
+  for (let i = 0; i < mm; i++) {
+    rowVal[i] = x.insertRow();
+
+    for (let j = 0; j < nn; j++) {
+      inputID[i][j] = document.createElement("INPUT");
+      inputID[i][j].setAttribute("type", "number");
+      inputID[i][j].setAttribute("id", "MTinput"+String(i)+String(j));
+
+
+      if (i == 0 && j == 0) {
+        // console.log(i, j)
+        inputID[i][j].style = "width:100%;font-size:70%;border-left:2px  solid green;"
+      } else {
+        inputID[i][j].style = "width:100%;font-size:70%;"
+      }
+
+      cellVal[i][j] = rowVal[i].insertCell();
+      cellVal[i][j].style = 'border-collapse:collapse;border-top: none;border-bottom: none;border:0px;';
+      cellVal[i][j].appendChild(inputID[i][j]);
+
+      //cellVal[i][j].innerText =String(i)+"--"+String(j);
+    }
+  }
+  // console.dir(x)
+  //let u = document.getElementById("inputmattable1")
+  //
+  //console.log("iiiiiiiiiiii")
+  //console.dir(x)
+}
+
+function forMatAdd(loc1,loc2, loc3){
+
+  // determine size of matrix to be added
+  let matsize = genRndMatSize(4,4);
+  // Generate the two matrix to be added
+  A1 = genMatrix(loc1, [], matsize[0], matsize[1]);
+  A2 = genMatrix(loc2, [], matsize[0], matsize[1]);
+
+  // create empty matrix to receive answer
+  MTinputMatrix(loc3, matsize[0], matsize[1]);
+
+  return [A1,A2]
+
+  }
+  
+  //console.dir(Ans1[0][0])
+
+  //document.getElementById(loc3).innerHTML = math.add(A1, A2);
+
+  //renderDjax(loc3)
+  function compareMatEqual(ag){
+    console.log(ag);
+    let matsize=[1,1];
+    let AnsAddMat = Array.from(Array(matsize[0]), () => new Array(matsize[1]));
+  
+    for (let i = 0; i < matsize[0]; i++){
+      for (let j = 0; j < matsize[1]; j++){
+        AnsAddMat[i][j] = document.getElementById("MTinput"+String(i)+String(j)).value;
+        
+        //console.log(AnsAddMat[i][j])
+        
+  
+      }
+    }
+  
+  
+  }
+

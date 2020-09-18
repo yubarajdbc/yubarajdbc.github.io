@@ -31,6 +31,9 @@
       });
     </script>
 
+  <!--     My SCRIPTS   -->
+  <script src="MatrixCreateMN.js"></script>
+
   <link rel="stylesheet" href="CSS_Matrix.css">
 
 </head>
@@ -273,7 +276,7 @@
           <p> Or </p>
           <h2>what can we do with matrices?</h2>
           <p class="horizontal_line"> </p>
-          <p> Turns out we can check equality, add, subtract and multiply them!</p>
+          <p> Turns out we can check equality, add, subtract and multiply them with a number!</p>
         </section>
         <!-- -------------------------------------------------------------------------  -->
         <section>
@@ -499,7 +502,7 @@
               $\quad B = \begin{bmatrix}1 & 4 & 7\\2 & 5 & 8\\3 & 6 & 9\end{bmatrix}_{\large \hspace{0.05cm}3 \times
               3}\quad$
               then,<br>
-               $ A + B = \begin{bmatrix} 1 +1 & 2 + 4 & 3+ 7\\ 4 +2 & 5 + 5 & 6+ 8\\ 7 +3 & 8 + 6 & 9+ 9
+              $ A + B = \begin{bmatrix} 1 +1 & 2 + 4 & 3+ 7\\ 4 +2 & 5 + 5 & 6+ 8\\ 7 +3 & 8 + 6 & 9+ 9
               \end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\hspace{0.5cm} $
               $ = \quad \begin{bmatrix}2 & 6 & 10\\6 & 10 & 14\\10 & 14 & 18\end{bmatrix}_{\large \hspace{0.05cm}3
               \times 3}\quad$
@@ -525,133 +528,272 @@
           </div>
         </section>
         <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Difference/subtraction of matrices
+          <p class="horizontal_line"> </p>
+          <div class="defns" ; style="line-height:130%;">
 
+            The difference between two matrices or the subtraction of one matrix from another
+            is nothing but addition with the negative of the corresponding matrix. <br>
 
+            Let $ A = [a_{ij}]_{m \times n}$ and $ B = [b_{ij}]_{m \times n}$ be two conformable matrices; <br>
+            then, their difference/subtraction $ A-B $ produces a new matrix $C$ (say) such that: <br>
+            $ C = A - B = A + (-B) = [a_{i j} - b_{i j}]_{m \times n} = [c_{i j}]_{m \times n}$
+            </defns>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples" style="text-align: left !important;">
+            <p class="examples">
+              <b>Example of negative of matrices: </b> <br><br>
+            </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}a_{1 1} & a_{1 2} & a_{1 3}\\a_{2 1} & a_{2 2} & a_{2 3}\\a_{3 1} & a_{3 2} & a_{3
+              3}\end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\quad$ and
+              $\quad B = \begin{bmatrix}b_{1 1} & b_{1 2} & b_{1 3}\\b_{2 1} & b_{2 2} & b_{2 3}\\b_{3 1} & b_{3 2} &
+              b_{3 3}\end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\quad$
+              then, $ A - B = \begin{bmatrix} a_{1 1} -b_{1 1} & a_{1 2} - b_{1 2} & a_{1 3}- b_{1 3}\\ a_{2 1} -b_{2 1}
+              & a_{2 2} - b_{2 2} & a_{2 3}- b_{2 3}\\ a_{3 1} -b_{3 1} & a_{3 2} - b_{3 2} & a_{3 3}- b_{3 3}
+              \end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\hspace{0.5cm} $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples" style="text-align: left !important;">
+            <p class="examples">
+              <b>Example of negative of matrices: </b> <br><br>
+            </p>
+
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}1 & 2 & 3\\4 & 5 & 6\\7 & 8 & 9\end{bmatrix}_{\large \hspace{0.05cm}3 \times
+              3}\quad$ and
+              $\quad B = \begin{bmatrix}1 & 4 & 7\\2 & 5 & 8\\3 & 6 & 9\end{bmatrix}_{\large \hspace{0.05cm}3 \times
+              3}\quad$
+              then, $ \\[1cm] A - B = \begin{bmatrix} 1 -1 & 2 - 4 & 3- 7\\ 4 -2 & 5 - 5 & 6- 8\\ 7 -3 & 8 - 6 & 9- 9
+              \end{bmatrix}_{\large \hspace{0.05cm}3 \times 3}\hspace{0.5cm} $
+              $ = \quad \begin{bmatrix}0 & -2 & -4\\2 & 0 & -2\\4 & 2 & 0\end{bmatrix}_{\large \hspace{0.05cm}3 \times
+              3}\quad$
+              <br> </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples" style="text-align: left !important;">
+            <p class="examples">
+              <b>Example of negative of matrices: </b> <br><br>
+            </p>
+
+            <br>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}1.0 + 3.1 i & 1 & -4.0\\1 & 1.9 & 4\end{bmatrix}_{\large \hspace{0.05cm}2 \times
+              3}\quad$ and
+              $\quad B = \begin{bmatrix}12 & 3 & -4\\0 & 0 & 11\end{bmatrix}_{\large \hspace{0.05cm}2 \times 3}\quad$
+              then, $ \\[1cm] A - B = \begin{bmatrix} (1.0 + 3.1 i )-12 & 1 - 3 & ( -4.0)-( -4)\\ 1 -0 & 1.9 - 0 & 4- 11
+              \end{bmatrix}_{\large \hspace{0.05cm}2 \times 3}\hspace{0.5cm} $
+              $ = \quad \begin{bmatrix}-11.0 + 3.1 i & -2 & 0\\1 & 1.9 & -7\end{bmatrix}_{\large \hspace{0.05cm}2 \times
+              3}\quad$
+              <br>
+            </p>
+
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Properties of Matrix addition
+          <p class="horizontal_line"> </p>
+          <div class="defns" ; style="">
+            <br>
+
+            (i). <b> Matrix addition is commutative: </b> If $A$ and $B$ be two matrices of
+            size $ m \times n$, then $A+B=B+A$ <br>
+
+            (ii). <b> Matrix addition is associative: </b> If $A$, $B$ and $C$
+            be two matrices of size $ m \times n$, then $A+B=B+A$ <br>
+            (iii). <b> Existence of additive identiy: </b> If $A$ and $B$
+            be two matrices of size $ m \times n$, then $A+B=B+A$ <br>
+            (iv). <b> Existence of additive inverse: </b> If $A$ and $B$
+            be two matrices of size $ m \times n$, then $A+B=B+A$ <br>
+
+            </defns>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Scalar multiplication
+          <p class="horizontal_line"> </p>
+          <div class="defns">
+            We define the multiplication of a matrix $A=[a_{i j}]_{ m \times n} $ by a scalar
+            $\lambda$ as another matrix say $B=[b_{i j}]_{m \times n}$ of the same size as
+            the original matrix A and whose elements are given by:
+            <p style="text-align:center; margin:0;">
+              $ b_{i j} = \lambda \times a_{i j }, \hspace{0.2cm} \forall \hspace{0.1cm} (i,j)$
+            </p>
+            <p style="text-align:center; margin:0;">
+              Thus, $ B = [b_{i j}]_{m \times n} = [\lambda a_{i j }]_{m \times n} $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples"> <b> Examples of scalar multiplication of matrices: </b> <br><br> </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}a_{1 1} & a_{1 2} & a_{1 3}\\a_{2 1} & a_{2 2} & a_{2 3}\end{bmatrix}_{\,2 \times
+              3}\;\; $
+              then, $\, \lambda \times A= \begin{bmatrix}\lambda a_{1 1} & \lambda a_{1 2} & \lambda a_{1 3}\\\lambda
+              a_{2 1} & \lambda a_{2 2} & \lambda a_{2 3}\end{bmatrix}_{\,2 \times 3}\;\; $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples"> <b> Examples of scalar multiplication of matrices: </b> <br><br> </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}1 & 2 & 3\\4 & 5 & 6\\7 & 8 & 9\end{bmatrix}_{\,3 \times 3}\;\; $
+              then, $ \, 3 \times A = \begin{bmatrix} 3 \times 1 & 3 \times 2 & 3\times 3\\ 3 \times4 & 3 \times 5 &
+              3\times 6\\ 3 \times 7 & 3 \times 8 & 3\times 9 \end{bmatrix}_{\large \hspace{0.05cm}3 \times
+              3}\hspace{0.5cm} $
+              $ =\: \begin{bmatrix}3 & 6 & 9\\12 & 15 & 18\\21 & 24 & 27\end{bmatrix}_{\,3 \times 3}\;\; $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples"> <b> Examples of scalar multiplication of matrices: </b> <br><br> </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}1.0 + 3.1 i & 1 & -4.0\\1 & 1.9 & 4\end{bmatrix}_{\,2 \times 3}\;\; $
+              then, $ -2 \times A = \begin{bmatrix} (-2 )\times(1.0 + 3.1 i ) & ( -2 )\times 1 & ( -2)\times( -4.0)\\
+              (-2 )\times1 & ( -2 )\times 1.9 & ( -2)\times 4 \end{bmatrix}_{\large \hspace{0.05cm}2 \times
+              3}\hspace{0.5cm} $
+              $ =\: \begin{bmatrix}-2.0 - 6.2 i & -2 & 8.0\\-2 & -3.8 & -8\end{bmatrix}_{\,2 \times 3}\;\; $
+
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div style="font-size:120%" class="NB" ;>
+            <br><b> N.B. :</b>
+            The negative of a matrix can also be thought of as a matrix obtained by multiplying the given
+            matrix by the scalar $(-1)$ i.e. if $A$ be any matrix then its negative can be written as:$\quad -A = (-1)
+            \times A $.
+            <br>
+            <br>
+            </NB>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          In the next section we will see some more operatorions on matrices.
+        </section>
         <!------------>
       </section>
       <!-- -------------------------------------------------------------------------  -->
       <!-- -------------------------------------------------------------------------  -->
       <!-- -------------------------------------------------------------------------  -->
       <section>
+        <!------------>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <h2> Some more types of operations possible on a matrix </h2>
+          <p class="horizontal_line"> </p>
+          <p> Wow! we can turn them upside down and even multiply two matrices together!</p>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Transpose of a matrix
+          <p class="horizontal_line"> </p>
+          <div class="defns">
+            The transpose of a matrix $A$ is another matrix obtained by changing the
+            rows of $A$ into columns of the new matrix or alternatively by changing the columns into rows. <br>
+            Transpose of a matrix $A$ is usually denoted by $A^T$ or $A'$ .
+            <br>
+
+            <p style="margin-top: 0px;">
+              i.e. $ \hspace{0.5 cm} \text{if} \hspace{1 cm} A = [a_{ij}]_{m \times n} \\
+              \text{then,} \hspace{0.6 cm} A^T = [a_{j \hspace{0.05cm} i}]_{n \times m} $
+            </p>
+
+            <p style="margin-top: 0px;">
+              i.e. the $ (i,j)^{th} $ element of a matrix becomes the $(j,i)^{th}$
+              element of its transpose and vice-versa.
+            </p>
+            </defns>
+
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples"> <b> Examples of Transpose of matrices : </b> <br><br> </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}a_{1 1} & a_{1 2} & a_{1 3}\\a_{2 1} & a_{2 2} & a_{2 3}\\a_{3 1} & a_{3 2} & a_{3
+              3}\end{bmatrix}_{\,3 \times 3}\;\; $ 
+              then, $\quad A^T = \begin{bmatrix}a_{1 1} & a_{2 1} & a_{3 1}\\a_{1 2} &
+              a_{2 2} & a_{3 2}\\a_{1 3} & a_{2 3} & a_{3 3}\end{bmatrix}_{\,3 \times 3}\;\; $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples"> <b> Examples of Transpose of matrices : </b> <br><br> </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}1.0 + 3.1 i & 1 & -9\end{bmatrix}_{\,1 \times 3}\;\; $ 
+              then, $ \quad A^T =
+              \begin{bmatrix}1.0 + 3.1 i\\1\\-9\end{bmatrix}_{\,3 \times 1}\;\; $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          <div id="examples">
+            <p class="examples"> <b> Examples of Transpose of matrices : </b> <br><br> </p>
+            <p style="line-height:5;font-size: 60%!important;">
+              If $ A = \begin{bmatrix}12 & 3 & -4 & 19 & 3\\0 & 0 & 11 & 2 & 0\\8 & 0 & 1 & 15 & 0\end{bmatrix}_{\,3
+              \times 5}\;\; $ 
+              then, $\quad A^T = \begin{bmatrix}12 & 0 & 8\\3 & 0 & 0\\-4 & 11 & 1\\19 & 2 & 15\\3 & 0 &
+              0\end{bmatrix}_{\,5 \times 3}\;\; $
+            </p>
+          </div>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Properties of Transpose of matrices
+          <p class="horizontal_line"> </p>
+          <div class="defns" style="font-size: 65%!important;" >
+            <br>
+            (i).  The transpose of the transpose of a matrix is the original matrix itself.  <br> 
+            If $A$ be any matrix then, $(A^T)^T=A$ <br>
+
+            (ii). If $A$ and $B$ be two matrices of same size ($ m \times n$), <br>
+            then $(A+B)^T=A^T+B^T$ <br>
+
+            (iii). If $A$ be any matrix and $\lambda$ be a scalar, <br>
+                  then, $(\lambda A^T)^T=\lambda A^T$ <br>
+
+            (iv). If $A$ and $B$ be two matrices comformable for matrix multiplication, <br>
+            then $(AB)^T=B^T A^T$ <br>
+
+            </defns>
+        </section>
+        <!-- -------------------------------------------------------------------------  -->
+        <section>
+          Next class we will look at matrix multiplication
+        </section>
+
+
+        <!------------>
+      </section>
+
+      <!-- -------------------------------------------------------------------------  -->
+      <!-- -------------------------------------------------------------------------  -->
+      <section>
         <h2> This is all for now<br><br>
           Check back after next class
+          <p class="horizontal_line"> </p>
         </h2>
       </section>
       <!-- -------------------------------------------------------------------------  -->
-
-
-
-
-
-
-
-
-      <!-- -------------------------------------------------------------------------  
-
-    <section data-background-iframe="SHM/GGBangle.html"  data-background-interactive>
-    </section>
-
-
-function load_home() {
-     document.getElementById("content").innerHTML='<object type="text/html" data="home.html" ></object>';
-}
--->
-
-
-
-
-      <!-- 
-  <section data-markdown="SHM\slide 4.md"> </section>    
-<section>
-  <p style="font-size:50%;text-align: justify;">
-    Basically what it means is that the only property that a point has is its position. 
-    </p>
-  <iframe src="SHM/GGBpoint.html" class="r-stretch" scrolling="no"> </iframe>
-
-</section>
-
-
-
-
-
-
-  <script src="MatrixfindElements.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section> 
-
-<p id="demo"></p>
-<p id="demo1"></p>
-<script> 
-
-var x = 10;
-var y = 20;
-var z = x + y;
-document.getElementById("demo").innerHTML = z;
-</script>
-
-<script type="text/javascript">
-
-function rInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
-
-
-let a = new Array(5)
-var i;
-for (i = 0; i <= 4; i++) {
-
- a[i] = rInt(-99,99);
-}
-
-console.log(a[0]);
-
-
-     let u = math.matrix([[a[0], a[1]], [a[2], math.complex(a[3], -a[4])]]) ;
-
-     let ca = nj.arange(6).reshape(2,3).T;// 
-
-     let cb = nj.random([2,3]);// 
-     let c = "[[" + String(cb).split("[[")[1].split("]]")[0] + "]]" ;
-     console.log(c);
-     //let cc = String(c)
-     //let ccc = cc.substring(6, cc.length-1)
-
-
-      var toPut = document.getElementById("demo1")
-    toPut.innerHTML += math.parse(String(u)).toTex();
-    toPut.innerHTML += math.parse(c).toTex();
-</script>
-
-       Slide Three
-
-</section>
-
-<section > 
-  <h3> For the four forlorn foresters</h3>
-</section>
-
-
-<section data-markdown="Slide1-3.md"> </section>
-
-   -->
-
-
-
-
-
     </div>
   </div>
   <!-- **********************************************************************************************  -->
@@ -676,6 +818,9 @@ console.log(a[0]);
       genMatrix("matrixDim1");
       createM_Element();
       MTelemenst(["elementval01", "answer01"])
+
+      // add matrices
+      forMatAdd("MatAdd1", "MatAdd2", "this2");
     }
   </script>
 
