@@ -210,16 +210,10 @@ function MTinputMatrix(ID2put, mm = 2, nn = 3) {
     for (let j = 0; j < nn; j++) {
       inputID[i][j] = document.createElement("INPUT");
       inputID[i][j].setAttribute("type", "number");
-      inputID[i][j].setAttribute("id", "MTinput"+String(i)+String(j));
-
-
-      if (i == 0 && j == 0) {
-        // console.log(i, j)
-        inputID[i][j].style = "width:100%;font-size:70%;border-left:2px  solid green;"
-      } else {
-        inputID[i][j].style = "width:100%;font-size:70%;"
-      }
-
+      inputID[i][j].setAttribute("id", ID2put+String(i)+String(j));
+      //console.log(ID2put+String(i)+String(j))
+      
+      inputID[i][j].style = "width:100%;font-size:70%;"
       cellVal[i][j] = rowVal[i].insertCell();
       cellVal[i][j].style = 'border-collapse:collapse;border-top: none;border-bottom: none;border:0px;';
       cellVal[i][j].appendChild(inputID[i][j]);
@@ -234,7 +228,10 @@ function MTinputMatrix(ID2put, mm = 2, nn = 3) {
   //console.dir(x)
 }
 
-function forMatAdd(loc1,loc2, loc3){
+function forMatAdd(loc1,loc2, loc3, thefun=math.add){
+  /* loc1 is the id of element to put first matrix
+     loc2 is the id of element to put second matrix
+     loc3 is the id of element to put input from user matrix */
 
   // determine size of matrix to be added
   let matsize = genRndMatSize(4,4);
@@ -244,9 +241,8 @@ function forMatAdd(loc1,loc2, loc3){
 
   // create empty matrix to receive answer
   MTinputMatrix(loc3, matsize[0], matsize[1]);
-
-  return [A1,A2]
-
+  CC = thefun(A1, A2)
+  //console.log(CC)
   }
   
   //console.dir(Ans1[0][0])
@@ -254,21 +250,43 @@ function forMatAdd(loc1,loc2, loc3){
   //document.getElementById(loc3).innerHTML = math.add(A1, A2);
 
   //renderDjax(loc3)
-  function compareMatEqual(ag){
-    console.log(ag);
-    let matsize=[1,1];
+  function compareMatEqual(loc1, loc2){
+    //loc1 is the id of element containing the input matrix
+    // loc2 is the id fo the element to display the result in
+    
+    let matsize=math.size(CC);
+
     let AnsAddMat = Array.from(Array(matsize[0]), () => new Array(matsize[1]));
   
+
+text0 = "the element(s) at";
+text2 = "position(s) do not match."
+text1=""
+let isallcorrect = 1;
+
     for (let i = 0; i < matsize[0]; i++){
       for (let j = 0; j < matsize[1]; j++){
-        AnsAddMat[i][j] = document.getElementById("MTinput"+String(i)+String(j)).value;
-        
-        //console.log(AnsAddMat[i][j])
-        
-  
+        // get input
+        AnsAddMat[i][j] = document.getElementById(loc1+String(i)+String(j)).value;
+        // check input
+        if ( AnsAddMat[i][j] !== String(CC[i][j]) ) {
+          text1 += " (" 
+          +String(i+1)+","+String(j+1)+") and ";
+          isallcorrect = 0;
+        }
       }
     }
+
+  let finaltext;
+// console.log("value of is" + isallcorrect)
+ if (isallcorrect==1){
+  finaltext = "Congratulations! you have got the correct answer!"
   
-  
+ } else {
+  finaltext = text0 + text1.slice(0, -4) + text2
+ }
+ //console.log(finaltext)
+//console.log(math.compare(CC, AnsAddMat))
+document.getElementById(loc2).innerHTML = finaltext;
   }
 
